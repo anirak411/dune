@@ -473,7 +473,7 @@ export default function App() {
     <div className="app">
       {!isUnlocked && (
         <section className="card">
-          <p className="section-label">private page</p>
+          <p className="section-label">secret</p>
           <input value={pass} placeholder="enter password" onChange={(e) => setPass(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && unlock()} />
           <button className="primary-btn" onClick={unlock}>open</button>
           <p className="status">{status}</p>
@@ -483,7 +483,7 @@ export default function App() {
       {isUnlocked && (
         <>
           <FloatingHearts />
-          <CursorHearts />
+          {page !== 'games' && <CursorHearts />}
           <main className="memory-layout">
             <nav className="mini-nav">
               {['all', 'media', 'games', 'secret'].map((p) => (
