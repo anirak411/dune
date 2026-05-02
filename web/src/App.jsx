@@ -33,7 +33,7 @@ const CONFIG = {
       { title: 'Monster', year: '2023', rating: 4.5, poster: '/monster.jpg', review: 'thank you for introducing me to this movie. broke my heart into a million pieces but it was a beautiful experience nonetheless. it was heavy, yet uplifting. a lot transpired in the film but the one moment that really stuck with me was when you asked what color was on the screen'},
       { title: 'Manila in the Claws of Light', year: '1975', rating: 5, poster: '/manila.jpg', review: 'this was genuinely just heartbreaking. all 120 minutes of it' },
       { title: 'Atonement', year: '2007', rating: 4, poster: '/atonement.jpg', review: 'FUCK YOU BRIONY TALLIS' },
-      { title: 'Mysterious Skin', year: '2004', rating: 5, poster: '/mysteriousskin.jpg', review: 'Incredibly moving and raw.' },
+      { title: 'Mysterious Skin', year: '2004', rating: 5, poster: '/mysteriousskin.jpg', review: 'i had no idea this movie was going to go down the way it did. i felt a bit out of it after it ended' },
       { title: 'Scream V', year: '2022', rating: 2, poster: '/scream5.jpeg', review: 'stupid af movie. the only saving grace was mikey madison'},
       { title: 'Parasite', year: '2019', rating: 5, poster: '/parasite.jpg', review: 'sorry i made you watch this movie at 2 am baby lmfao' },
       { title: 'Possession', year: '1981', rating: 4.5, poster: '/possession.jpg', review: 'i love how we both went into this movie thinking it was gonna be about a demonic possession. i felt like i was going crazy with isabelle adjani' },
@@ -297,10 +297,10 @@ export default function App() {
   function newPuzzle() {
     const map = CONFIG.memories.valorantMaps[Math.floor(Math.random() * CONFIG.memories.valorantMaps.length)]
     setPuzzleImage(map)
-    
+
     // Create 3x3 grid (0-8, where 8 is empty)
     let initial = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    
+
     // Shuffle with solvability check
     function isSolvable(arr) {
       let invCount = 0
@@ -331,7 +331,7 @@ export default function App() {
     const emptyRow = Math.floor(emptyIndex / 3)
     const emptyCol = emptyIndex % 3
 
-    const isAdjacent = (Math.abs(row - emptyRow) === 1 && col === emptyCol) || 
+    const isAdjacent = (Math.abs(row - emptyRow) === 1 && col === emptyCol) ||
                       (Math.abs(col - emptyCol) === 1 && row === emptyRow)
 
     if (isAdjacent) {
@@ -340,7 +340,7 @@ export default function App() {
       const newGrid = [...puzzleGrid]
       ;[newGrid[index], newGrid[emptyIndex]] = [newGrid[emptyIndex], newGrid[index]]
       setPuzzleGrid(newGrid)
-      
+
       if (newGrid.every((val, i) => val === i)) {
         setPuzzleSolved(true)
       } else if (newMoves >= PUZZLE_MAX_MOVES) {
